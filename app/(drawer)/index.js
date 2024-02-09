@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, View, ScrollView, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, ScrollView, Text, TouchableOpacity, StatusBar } from "react-native";
 import * as Animatable from 'react-native-animatable';
 import { useRouter } from 'expo-router';
-import { FontAwesome, FontAwesome6, Entypo } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import { Cores } from "../../src/styles/Cores";
 import { PageStyles } from "../../src/styles/PageStyles";
 import { Btn } from "../../src/components/Btn";
+import opcoesHome from '../../src/json/opcoesHome.json';
+import { BtnOpcoes } from "../../src/components/BtnOpcoes";
+
 
 export default function Home() {
 
@@ -14,8 +17,6 @@ export default function Home() {
     const [saldoTotal, setSaldoTotal] = useState([])
     const [valor, setValor] = useState()
 
-    // let soma = 0
-
     const router = useRouter()
 
     const checarSaldo = () => {
@@ -23,12 +24,6 @@ export default function Home() {
             setIconeSaldo('eye'), setVerSaldo(true), somaValores(saldoTotal)
         ) : (setIconeSaldo('eye-with-line'), setVerSaldo(false))
     }
-
-    // async function BuscarEntradas() {
-    //     const entradas = await fetch("https://api-financas-zeta.vercel.app/entradas")
-    //     const resposta = await entradas.json()
-    //     setSaldoTotal(resposta)
-    // }
 
     useEffect(() => {
         async function BuscarEntradas() {
@@ -49,6 +44,7 @@ export default function Home() {
 
     return (
         <View style={{ flex: 1 }}>
+            <StatusBar backgroundColor={Cores.azul} translucent={false} barStyle={"light-content"}/>
             <View style={styles.cabecalho}>
                 <View style={styles.cabecalhoContainer}>
                     <View style={styles.containerIcones}>
@@ -73,50 +69,15 @@ export default function Home() {
                     </View>
                 </View>
 
-                <View style={styles.containerbtnIconesControles}>
-                    <TouchableOpacity
-                        onPress={() => router.push('Entradas')}
-                        style={styles.btnIconesControles}
-                    >
-                        <FontAwesome6
-                            name="money-bill-wave"
-                            size={60} color={Cores.branco}
-                        />
-                        <Text style={styles.btnIconesControlesTxt}>Entradas</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={() => router.push('Saidas')}
-                        style={styles.btnIconesControles}
-                    >
-                        <FontAwesome6
-                            name="money-bill-transfer"
-                            size={60} color={Cores.branco}
-                        />
-                        <Text style={styles.btnIconesControlesTxt}>Saidas</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={() => router.push('NovaEntrada')}
-                        style={styles.btnIconesControles}
-                    >
-                        <FontAwesome6
-                            name="pencil"
-                            size={60} color={Cores.branco}
-                        />
-                        <Text style={styles.btnIconesControlesTxt}>Nova Entrada</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={() => router.push('NovaSaida')}
-                        style={styles.btnIconesControles}
-                    >
-                        <FontAwesome6
-                            name="pencil"
-                            size={60} color={Cores.branco}
-                        />
-                        <Text style={styles.btnIconesControlesTxt}>Nova Saida</Text>
-                    </TouchableOpacity>
+                <View style={styles.containerbtnIconesControles}>                    
+                    {
+                        opcoesHome.map(card => (
+                            <BtnOpcoes 
+                                key={card.rota} rota={card.rota}
+                                texto={card.texto} icone={card.icone}
+                            />
+                        ))
+                    }
                 </View>
             </ScrollView>
 

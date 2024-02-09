@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Alert } from "react-native";
 import * as Animatable from 'react-native-animatable';
 import { Input } from "../../src/components/Inputs";
 import { PageStyles } from "../../src/styles/PageStyles";
@@ -26,7 +26,7 @@ export default function NovaEntrada() {
             })
         })
         const resposta = await buscaDados.json()
-        console.log(resposta)
+        Alert.alert(resposta.Mensagem)
     }
 
 

@@ -1,0 +1,22 @@
+[
+    {
+        "rota": "Entradas",
+        "icone": "money-bill-wave",
+        "texto": "Entradas"
+    },
+    {
+        "rota": "Saidas",
+        "icone": "money-bill-transfer",
+        "texto": "Saidas"
+    },
+    {
+        "rota": "NovaEntrada",
+        "icone": "pencil",
+        "texto": "Nova Entrada"
+    },
+    {
+        "rota": "NovaSaida",
+        "icone": "pencil",
+        "texto": "Nova Saida"
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "rota": "Ainda vou verificar",
+        "icone": "folder-open",
+        "texto": "Todos"
+    },
+    {
+        "rota": "Ainda vou verificar",
+        "icone": "searchengin",
+        "texto": "Filtrar"
+    },
+    {
+        "rota": "Ainda vou verificar",
+        "icone": "list-ol",
+        "texto": "Editar"
+    },
+    {
+        "rota": "Ainda vou verificar",
+        "icone": "trash",
+        "texto": "Apagar"
+    }
+]

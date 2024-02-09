@@ -13,6 +13,20 @@ export const PageStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
+    cabecalho: {
+        width: '100%',
+        // height: 100,
+        height: 50,
+        backgroundColor: Cores.azul
+    },
+    containerbtnIconesControles: {
+        width: '100%',
+        padding: 20,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+    },
     rodape: {
         width: '90%', 
         height: 60, 
