@@ -13,7 +13,7 @@ export default function NovaEntrada() {
     const [entradaData, setEntradaData] = useState()
 
     const validarEntrada = async () => {
-        const buscaDados = await fetch('https://api-financas-zeta.vercel.app/entradas/nova', {
+        const buscaDados = await fetch('https://minhas-financas-peach.vercel.app/entradas/nova', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

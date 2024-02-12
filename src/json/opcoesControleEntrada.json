@@ -1,21 +1,21 @@
 [
     {
-        "rota": "Ainda vou verificar",
+        "rota": "entradas/TodasEntradas",
         "icone": "folder-open",
         "texto": "Todos"
     },
     {
-        "rota": "Ainda vou verificar",
+        "rota": "entradas/FiltrarEntradas",
         "icone": "searchengin",
         "texto": "Filtrar"
     },
     {
-        "rota": "Ainda vou verificar",
+        "rota": "entradas/EditarEntradas",
         "icone": "list-ol",
         "texto": "Editar"
     },
     {
-        "rota": "Ainda vou verificar",
+        "rota": "entradas/ExcluirEntradas",
         "icone": "trash",
         "texto": "Apagar"
     }

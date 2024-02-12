@@ -12,7 +12,7 @@ export default function Entradas() {
 
     useEffect(() => {
         async function BuscarEntradas() {
-            const entradas = await fetch("https://api-financas-zeta.vercel.app/entradas")
+            const entradas = await fetch("https://minhas-financas-peach.vercel.app/entradas")
             const resposta = await entradas.json()
             setDados(resposta)
         }

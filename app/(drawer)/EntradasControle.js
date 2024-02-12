@@ -20,6 +20,7 @@ export default function EntradasControle() {
                             key={card.texto}
                             icone={card.icone}
                             texto={card.texto}
+                            rota={card.rota}
                         />
                     ))
                 }

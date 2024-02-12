@@ -2,14 +2,14 @@ import { useState } from "react";
 import { StyleSheet, View, TouchableOpacity, TextInput } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 
-export const Input = ({ placeholder, value, dados, teclado }) => {
+export const Input = ({ placeholder, txtCor, value, dados, teclado }) => {
     return (
         <View style={styles.container}>
             <TextInput
                 placeholder={placeholder}
                 value={value}
                 onChangeText={dados}
-                style={styles.input}
+                style={[styles.input, {color: txtCor}]}
                 keyboardType={teclado}
             />
         </View>

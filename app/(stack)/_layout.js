@@ -19,16 +19,14 @@ export default function StackLayout() {
             />
             <Stack.Screen name='Entradas' />
             <Stack.Screen name='Saidas' />
-            <Stack.Screen name='NovaEntrada'
-                options={{
-                    headerShown: false
-                }}
-            />
-            <Stack.Screen name='NovaSaida'
-                options={{
-                    headerShown: false
-                }}
-            />
+            <Stack.Screen name='NovaEntrada' options={{ headerShown: false }} />
+            <Stack.Screen name='NovaSaida' options={{ headerShown: false }} />
+
+            {/* CONTROLE DE ENTRADAS */}
+            <Stack.Screen name='entradas/TodasEntradas' options={{ headerShown: false }}/>
+            <Stack.Screen name='entradas/FiltrarEntradas' options={{ headerShown: false }}/>
+            <Stack.Screen name='entradas/EditarEntradas' />
+            <Stack.Screen name='entradas/ExcluirEntradas' />
         </Stack>
     )
 }
