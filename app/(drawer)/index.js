@@ -27,7 +27,7 @@ export default function Home() {
 
     useEffect(() => {
         async function BuscarEntradas() {
-            const entradas = await fetch("https://minhas-financas-peach.vercel.app/entradas")
+            const entradas = await fetch("https://api-financas-topaz.vercel.app/entradas")
             const resposta = await entradas.json()
             setSaldoTotal(resposta)
         }
@@ -50,11 +50,15 @@ export default function Home() {
                     <View style={styles.containerIcones}>
                         <Text style={styles.cabecalhoContainerTxt}>Olá, Bruno Santos</Text>
                     </View>
-                    <View style={styles.containerIcones}>
-                        <TouchableOpacity onPress={checarSaldo}>
+                    {/* <View style={styles.containerIcones}>
+                        <TouchableOpacity style={styles.containerBtnIcone} onPress={checarSaldo}>
                             <Entypo name={iconeSaldo} size={30} color={Cores.branco} />
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
+                        <TouchableOpacity style={styles.containerBtnIcone} onPress={checarSaldo}>
+                            <Entypo name={iconeSaldo} size={40} color={Cores.branco} />
+                        </TouchableOpacity>
+                    
                 </View>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -100,7 +104,7 @@ const styles = StyleSheet.create({
     cabecalho: {
         width: '100%',
         // height: 100,
-        height: 50,
+        height: 60,
         backgroundColor: Cores.azul
     },
     cabecalhoContainer: {
@@ -118,8 +122,20 @@ const styles = StyleSheet.create({
         color: Cores.branco
     },
     containerIcones: {
-        width: '80%',
-        padding: 2
+        width: '70%',
+        height: '100%',
+        padding: 2,
+        justifyContent: 'center',
+    },
+    containerBtnIcone: {
+        width: '20%',
+        height: '100%',
+        marginRight: 25,
+        padding: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'red',
+        zIndex: 999
     },
     containerValorGeral: {
         width: '100%',

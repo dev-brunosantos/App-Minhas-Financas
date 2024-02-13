@@ -6,57 +6,58 @@ import { Cores } from "../../../src/styles/Cores";
 import { useState } from "react";
 
 
-export default function TodasEntradas() {
+export default function TodasSaidas() {
 
-    const [nomeEntrada, setNomeEntrada] = useState()
-    const [entrada, setEntrada] = useState([])
+    const [nomeSaida, setNomeSaida] = useState()
+    const [saida, setSaida] = useState([])
 
-    const filtrarEntrada = async () => {
-        const dados = await fetch('https://api-financas-topaz.vercel.app/entradas/nome', {
+    const filtrarsaida = async () => {
+        const dados = await fetch('https://api-financas-topaz.vercel.app/saidas/nome', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                "nome": nomeEntrada
+                "nome": nomeSaida
             })
         })
         const resposta = await dados.json()
-        setEntrada(resposta)
-        return setNomeEntrada('')
+        setSaida(resposta)
+        console.log(saida)
+        return setNomeSaida('')
     }
 
     return (
         <View style={styles.container}>
-            <Text style={{fontSize: 30, fontWeight: "bold", color: Cores.azul}}>Buscar Entrada</Text>
+            <Text style={{fontSize: 30, fontWeight: "bold", color: Cores.azul}}>Buscar saida</Text>
             <View style={styles.containerFormulario}>
                 <View style={styles.containerInputBtn}>
                     <Input
                         txtCor={Cores.branco}
-                        placeholder={"Nome da Entrada"}
-                        dados={(txt) => setNomeEntrada(txt)}
+                        placeholder={"Nome da saida"}
+                        dados={(txt) => setNomeSaida(txt)}
                     />
                 </View>
                 <View style={styles.containerInputBtn}>
                     <Btn
-                        titulo={"Buscar Entrada"}
+                        titulo={"Buscar saida"}
                         txtCor={Cores.branco}
                         txtFont={25}
-                        funcao={filtrarEntrada}
+                        funcao={filtrarsaida}
                     />
                 </View>
             </View>
 
             <View>
                 {
-                    entrada.map(cardEntrada => (
+                    saida.map(cardsaida => (
                         <CardEntradasInfor 
-                            key={cardEntrada._id}
-                            entradaNome={cardEntrada.nome}
-                            valor={cardEntrada.valor}
-                            data={cardEntrada.data}
-                            id={cardEntrada._id}
+                            key={cardsaida._id}
+                            entradaNome={cardsaida.nome}
+                            valor={cardsaida.valor}
+                            data={cardsaida.data}
+                            id={cardsaida._id}
                         />
                     ))
                 }

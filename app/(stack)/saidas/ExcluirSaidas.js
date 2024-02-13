@@ -1,64 +1,61 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Input } from "../../../src/components/Inputs";
 import { Btn } from "../../../src/components/Btn";
-import { CardEntradasInfor } from "../../../src/components/Cards/CardEntradasInfor";
 import { Cores } from "../../../src/styles/Cores";
 import { useState } from "react";
 
 
-export default function TodasEntradas() {
+export default function ExcluirSaidas() {
 
-    const [nomeEntrada, setNomeEntrada] = useState()
-    const [entrada, setEntrada] = useState([])
+    const [id, setID] = useState()
+    const [res, setRes] = useState([])
 
-    const filtrarEntrada = async () => {
-        const dados = await fetch('https://api-financas-topaz.vercel.app/entradas/nome', {
-            method: 'POST',
+    const filtrarSaida = async () => {
+        const dados = await fetch(`https://api-financas-topaz.vercel.app/saidas/apagar/${id}`, {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                "nome": nomeEntrada
+                "_id": id
             })
         })
         const resposta = await dados.json()
-        setEntrada(resposta)
-        return setNomeEntrada('')
+        setRes(resposta.Mensagem)
+
+        return setID('')
     }
 
     return (
         <View style={styles.container}>
-            <Text style={{fontSize: 30, fontWeight: "bold", color: Cores.azul}}>Buscar Entrada</Text>
+            <Text style={{ fontSize: 30, fontWeight: "bold", color: Cores.azul }}>Buscar Saida</Text>
             <View style={styles.containerFormulario}>
                 <View style={styles.containerInputBtn}>
                     <Input
                         txtCor={Cores.branco}
-                        placeholder={"Nome da Entrada"}
-                        dados={(txt) => setNomeEntrada(txt)}
+                        placeholder={"Id da Saida"}
+                        value={id}
+                        dados={(txt) => setID(txt)}
                     />
                 </View>
                 <View style={styles.containerInputBtn}>
                     <Btn
-                        titulo={"Buscar Entrada"}
+                        titulo={"Apagar Saida"}
                         txtCor={Cores.branco}
                         txtFont={25}
-                        funcao={filtrarEntrada}
+                        funcao={filtrarSaida}
                     />
                 </View>
             </View>
 
             <View>
                 {
-                    entrada.map(cardEntrada => (
-                        <CardEntradasInfor 
-                            key={cardEntrada._id}
-                            entradaNome={cardEntrada.nome}
-                            valor={cardEntrada.valor}
-                            data={cardEntrada.data}
-                            id={cardEntrada._id}
-                        />
-                    ))
+                    res != '' ? (
+                        <Text style={styles.txt}>
+                            {res}
+                        </Text>
+                    ) : <Text />
                 }
             </View>
         </View>
@@ -81,6 +78,15 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 60,
         borderRadius: 10,
+        backgroundColor: Cores.azul
+    },
+    txt: {
+        color: Cores.branco,
+        textAlign: 'center',
+        fontSize: 40,
+        fontWeight: "bold",
+        borderRadius: 10,
+        padding: 30,
         backgroundColor: Cores.azul
     }
 })

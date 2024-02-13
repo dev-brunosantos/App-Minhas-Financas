@@ -12,8 +12,13 @@ export default function Entradas() {
 
     useEffect(() => {
         async function BuscarEntradas() {
-            const entradas = await fetch("https://minhas-financas-peach.vercel.app/entradas")
-            const resposta = await entradas.json()
+            // const entradas = await fetch("https://api-financas-topaz.vercel.app/entradas")
+            // const resposta = await entradas.json()
+            // setDados(resposta)
+
+            const consulta = await fetch('https://api-financas-topaz.vercel.app/entradas')
+            const resposta = await consulta.json()
+            console.log(resposta)
             setDados(resposta)
         }
         BuscarEntradas()

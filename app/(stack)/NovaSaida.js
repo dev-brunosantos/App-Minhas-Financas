@@ -16,7 +16,8 @@ export default function NovaSaida() {
     const dados = []
 
     const cadastrarSaida = async () => {
-        const buscaDados = await fetch('https://minhas-financas-peach.vercel.app/saidas/nova', {
+        // const buscaDados = await fetch('https://minhas-financas-peach.vercel.app/saidas/nova', {
+        const buscaDados = await fetch('https://api-financas-topaz.vercel.app/saidas/nova', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

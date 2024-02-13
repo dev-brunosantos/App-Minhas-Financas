@@ -6,77 +6,77 @@ import { useState } from "react";
 
 
 
-export default function EditarEntradas() {
+export default function EditarSaidas() {
 
-    const [idEntrada, setIdEntrada] = useState()
-    const [editarNomeEntrada, setEditarNomeEntrada] = useState()
-    const [editarValorEntrada, setEditarValorEntrada] = useState()
-    const [editarDataEntrada, setEditarDataEntrada] = useState()
+    const [idSaida, setIdSaida] = useState()
+    const [editarNomeSaida, setEditarNomeSaida] = useState()
+    const [editarValorSaida, setEditarValorSaida] = useState()
+    const [editarDataSaida, setEditarDataSaida] = useState()
 
     async function buscarDados() {
-        const busca = await fetch(`https://api-financas-topaz.vercel.app/entradas/editar/${idEntrada}`, {
+        const busca = await fetch(`https://api-financas-topaz.vercel.app/saidas/editar/${idSaida}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                "nome": editarNomeEntrada,
-                "valor": editarValorEntrada,
-                "data": editarDataEntrada
+                "nome": editarNomeSaida,
+                "valor": editarValorSaida,
+                "data": editarDataSaida
             })
         })
         const resposta = await busca.json()
         Alert.alert(resposta.Mensagem)
         return(
-            setIdEntrada(''), setEditarNomeEntrada(''),
-            setEditarValorEntrada(''), setEditarDataEntrada('')
+            setIdSaida(''), setEditarNomeSaida(''),
+            setEditarValorSaida(''), setEditarDataSaida('')
         )
     }
 
     return (
         <View style={[styles.container, { alignContent: 'center' }]}>
-            <Text style={{ fontSize: 30, fontWeight: "bold", color: Cores.azul }}>Editar Entrada</Text>
+            <Text style={{ fontSize: 30, fontWeight: "bold", color: Cores.azul }}>Editar Saida</Text>
             <View style={styles.containerFormulario}>
                 <View style={styles.containerInputBtn}>
                     <Input
                         txtCor={Cores.branco}
-                        placeholder={"ID da Entrada"}
-                        value={idEntrada}
-                        dados={(txt) => setIdEntrada(txt)}
+                        placeholder={"ID da Saida"}
+                        value={idSaida}
+                        dados={(txt) => setIdSaida(txt)}
                     />
                 </View>
 
                 <View style={[styles.containerInput]}>
                     <Input
                         txtCor={Cores.branco}
-                        placeholder={"Nome da entrada"}
-                        value={editarNomeEntrada}
-                        dados={(txt) => setEditarNomeEntrada(txt)}
+                        placeholder={"Nome da Saida"}
+                        value={editarNomeSaida}
+                        dados={(txt) => setEditarNomeSaida(txt)}
                     />
                 </View>
                 <View style={[styles.containerInput]}>
                     <Input
                         txtCor={Cores.branco}
-                        placeholder={"Valor da entrada"}
-                        value={editarValorEntrada}
+                        placeholder={"Valor da Saida"}
+                        value={editarValorSaida}
                         teclado={"numeric"}
-                        dados={(txt) => setEditarValorEntrada(txt)}
+                        dados={(txt) => setEditarValorSaida(txt)}
                     />
                 </View>
                 <View style={[styles.containerInput]}>
                     <Input
                         txtCor={Cores.branco}
-                        placeholder={"Data da entrada"}
-                        value={editarDataEntrada}
-                        dados={(txt) => setEditarDataEntrada(txt)}
+                        placeholder={"Data da Saida"}
+                        value={editarDataSaida}
+                        dados={(txt) => setEditarDataSaida(txt)}
                     />
                 </View>
 
             </View>
             <View style={styles.containerInputBtn}>
                 <Btn
-                    titulo={"Editar Entrada"}
+                    titulo={"Editar Saida"}
                     txtCor={Cores.branco}
                     txtFont={25}
                     funcao={buscarDados}

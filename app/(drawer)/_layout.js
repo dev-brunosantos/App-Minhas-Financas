@@ -10,10 +10,10 @@ export default function DrawerLayout() {
             <StatusBar style='light' backgroundColor={Cores.azul} translucent={false} barStyle={'light-content'} />
             <Drawer
                 screenOptions={{
-                    headerStatusBarHeight: -100,
+                    headerStatusBarHeight: -200,
                     headerLeftContainerStyle: {
                         position: 'absolute',
-                        top: 10,
+                        top: 15,
                         right: 0
                     },
                     drawerHideStatusBarOnOpen: false,

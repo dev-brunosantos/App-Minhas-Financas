@@ -13,7 +13,7 @@ export default function NovaEntrada() {
     const [entradaData, setEntradaData] = useState()
 
     const validarEntrada = async () => {
-        const buscaDados = await fetch('https://minhas-financas-peach.vercel.app/entradas/nova', {
+        const buscaDados = await fetch('https://api-financas-topaz.vercel.app/entradas/nova', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,20 +39,20 @@ export default function NovaEntrada() {
                 <Text style={{ fontSize: 40, fontWeight: 'bold', color: Cores.branco, textAlign: "center" }}>Cadastrar nova Entrada</Text>
             </View>
             <View style={[PageStyles.pageContainer, { height: 250 }]}>
-                <View style={[styles.container, { backgroundColor: Cores.branco }]}>
+                <View style={[styles.containerInput, { backgroundColor: Cores.branco }]}>
                     <Input
                         placeholder={"Nome da entrada"}
                         dados={(txt) => setEntradaNome(txt)}
                     />
                 </View>
-                <View style={[styles.container, { backgroundColor: Cores.branco }]}>
+                <View style={[styles.containerInput, { backgroundColor: Cores.branco }]}>
                     <Input
                         placeholder={"Valor da entrada"}
                         teclado={"numeric"}
                         dados={(txt) => setEntradaValor(txt)}
                     />
                 </View>
-                <View style={[styles.container, { backgroundColor: Cores.branco }]}>
+                <View style={[styles.containerInput, { backgroundColor: Cores.branco }]}>
                     <Input
                         placeholder={"Data da entrada"}
                         dados={(txt) => setEntradaData(txt)}
@@ -60,7 +60,7 @@ export default function NovaEntrada() {
                 </View>
             </View>
             <View style={[
-                styles.container,
+                styles.containerInput,
                 { width: '90%', backgroundColor: Cores.branco }
             ]}>
                 <Btn
@@ -75,7 +75,7 @@ export default function NovaEntrada() {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    containerInput: {
         width: '100%',
         height: 60,
         // borderWidth: 1,

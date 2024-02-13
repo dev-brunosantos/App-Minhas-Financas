@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 import { Text, View, ScrollView } from "react-native";
 import { CardEntradasInfor } from "../../../src/components/Cards/CardEntradasInfor";
 
-export default function TodasEntradas() {
+export default function TodasSaidas() {
 
-    const [entradas, setEntradas] = useState([])
+    const [saidas, setSaidas] = useState([])
 
     useEffect(() => {
         async function buscarDados() {
-            // const dados = await fetch('https://minhas-financas-peach.vercel.app/entradas')
-            const dados = await fetch('https://api-financas-topaz.vercel.app/entradas')
+            const dados = await fetch('https://api-financas-topaz.vercel.app/saidas')
             const resposta = await dados.json()
-            setEntradas(resposta)
+            setSaidas(resposta)
         }
         buscarDados()
     }, [])
@@ -23,7 +22,7 @@ export default function TodasEntradas() {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View>
                 {
-                    entradas.map(card => (
+                    saidas.map(card => (
                         <CardEntradasInfor
                             key={card.id}
                             entradaNome={card.nome}

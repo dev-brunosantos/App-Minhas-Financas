@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import * as Animatable from 'react-native-animatable';
 import {useRouter} from 'expo-router';
-import opcoes from '../../src/json/opcoesControleEntrada.json';
+import opcoes from '../../src/json/opcoesControleSaida.json';
 import { BtnOpcoes } from "../../src/components/BtnOpcoes";
 import { PageStyles } from "../../src/styles/PageStyles";
 import { Cores } from "../../src/styles/Cores";
@@ -20,6 +20,7 @@ export default function saidasControle() {
                             key={card.texto}
                             icone={card.icone}
                             texto={card.texto}
+                            rota={card.rota}
                         />
                     ))
                 }

@@ -12,7 +12,8 @@ export default function Saidas() {
 
     useEffect(() => {
         async function BuscarSaidas(api) {
-            const saidas = await fetch("https://minhas-financas-peach.vercel.app/saidas")
+            // const saidas = await fetch("https://minhas-financas-peach.vercel.app/saidas")
+            const saidas = await fetch("https://api-financas-topaz.vercel.app/saidas")
             const resposta = await saidas.json()
             setDados(resposta)
         }
