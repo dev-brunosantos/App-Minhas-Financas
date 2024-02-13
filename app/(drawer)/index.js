@@ -50,15 +50,9 @@ export default function Home() {
                     <View style={styles.containerIcones}>
                         <Text style={styles.cabecalhoContainerTxt}>Olá, Bruno Santos</Text>
                     </View>
-                    {/* <View style={styles.containerIcones}>
-                        <TouchableOpacity style={styles.containerBtnIcone} onPress={checarSaldo}>
-                            <Entypo name={iconeSaldo} size={30} color={Cores.branco} />
-                        </TouchableOpacity>
-                    </View> */}
                         <TouchableOpacity style={styles.containerBtnIcone} onPress={checarSaldo}>
                             <Entypo name={iconeSaldo} size={40} color={Cores.branco} />
                         </TouchableOpacity>
-                    
                 </View>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -103,13 +97,11 @@ export default function Home() {
 const styles = StyleSheet.create({
     cabecalho: {
         width: '100%',
-        // height: 100,
         height: 60,
         backgroundColor: Cores.azul
     },
     cabecalhoContainer: {
         width: '100%',
-        // height: '50%',
         height: '100%',
         paddingHorizontal: 20,
         flexDirection: 'row',
@@ -134,7 +126,6 @@ const styles = StyleSheet.create({
         padding: 2,
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor: 'red',
         zIndex: 999
     },
     containerValorGeral: {
@@ -165,7 +156,6 @@ const styles = StyleSheet.create({
     btnIconesControles: {
         width: 130,
         height: 130,
-        // borderWidth: 1,
         padding: 5,
         margin: 10,
         shadowOffset: { width: 10, height: 10 },

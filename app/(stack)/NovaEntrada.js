@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     containerInput: {
         width: '100%',
         height: 60,
-        // borderWidth: 1,
         borderRadius: 10,
         shadowOffset: { width: 10, height: 10 },
         elevation: 5

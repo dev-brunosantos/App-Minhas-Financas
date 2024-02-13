@@ -15,13 +15,13 @@ export default function Login() {
     const [senha, setSenha] = useState()
 
     const validarUsuario = () => {
-        // if(usuario == "Bruno" && senha === "brunosds" || 
-        //     usuario == "Monica" && senha === "moni2520"
-        // ) {
-        //     return router.push('(drawer)')
-        // }
-        // return alert('Usuário incorreto!')
-        return router.push('(drawer)')
+        if(usuario == "Bruno" && senha === "brunosds" || 
+            usuario == "Monica" && senha === "moni2520"
+        ) {
+            return router.push('(drawer)')
+        }
+        return alert('Usuário incorreto!')
+        // return router.push('(drawer)')
     }
 
     return (
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: 60,
-        // borderWidth: 1,
         borderRadius: 10,
         shadowOffset: { width: 10, height: 10 },
         elevation: 5

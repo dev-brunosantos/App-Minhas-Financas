@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, View, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import { CardEntradasInfor } from "../../../src/components/Cards/CardEntradasInfor";
 
 export default function TodasSaidas() {

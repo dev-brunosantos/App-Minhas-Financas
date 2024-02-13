@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Cores } from "../styles/Cores";
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     btnIconesControles: {
         width: 130,
         height: 130,
-        // borderWidth: 1,
         padding: 5,
         margin: 10,
         shadowOffset: { width: 10, height: 10 },

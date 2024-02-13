@@ -5,7 +5,6 @@ import { Input } from "../../src/components/Inputs";
 import { PageStyles } from "../../src/styles/PageStyles";
 import { Cores } from "../../src/styles/Cores";
 import { Btn } from "../../src/components/Btn";
-import { API } from "../../src/components/FuncaoSomar";
 
 export default function NovaSaida() {
 
@@ -16,7 +15,6 @@ export default function NovaSaida() {
     const dados = []
 
     const cadastrarSaida = async () => {
-        // const buscaDados = await fetch('https://minhas-financas-peach.vercel.app/saidas/nova', {
         const buscaDados = await fetch('https://api-financas-topaz.vercel.app/saidas/nova', {
             method: 'POST',
             headers: {
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: 60,
-        // borderWidth: 1,
         borderRadius: 10,
         shadowOffset: { width: 10, height: 10 },
         elevation: 5

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, View, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import { CardEntradasInfor } from "../../../src/components/Cards/CardEntradasInfor";
 
 export default function TodasEntradas() {
@@ -8,7 +8,6 @@ export default function TodasEntradas() {
 
     useEffect(() => {
         async function buscarDados() {
-            // const dados = await fetch('https://minhas-financas-peach.vercel.app/entradas')
             const dados = await fetch('https://api-financas-topaz.vercel.app/entradas')
             const resposta = await dados.json()
             setEntradas(resposta)

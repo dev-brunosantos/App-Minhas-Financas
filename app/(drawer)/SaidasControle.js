@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import * as Animatable from 'react-native-animatable';
 import {useRouter} from 'expo-router';
 import opcoes from '../../src/json/opcoesControleSaida.json';

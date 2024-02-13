@@ -1,12 +1,10 @@
 import { StatusBar } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
-// import { StatusBar } from 'expo-status-bar';
 import { Cores } from '../../src/styles/Cores';
 
 export default function DrawerLayout() {
     return (
         <>
-            {/* <StatusBar backgroundColor={Cores.azul} translucent barStyle={'light-content'} /> */}
             <StatusBar style='light' backgroundColor={Cores.azul} translucent={false} barStyle={'light-content'} />
             <Drawer
                 screenOptions={{
