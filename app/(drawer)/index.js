@@ -14,14 +14,16 @@ export default function Home() {
 
     const [iconeSaldo, setIconeSaldo] = useState('eye-with-line')
     const [verSaldo, setVerSaldo] = useState(false)
-    const [saldoTotal, setSaldoTotal] = useState([])
-    const [valor, setValor] = useState()
+    const [saldoTotalEntrada, setSaldoTotalentrada] = useState([])
+    const [valorEntrada, setValorEntrada] = useState()
+    const [saldoTotalSaida, setSaldoTotalSaida] = useState([])
+    const [valorSaida, setValorSaida] = useState()
 
     const router = useRouter()
 
     const checarSaldo = () => {
         iconeSaldo == 'eye-with-line' ? (
-            setIconeSaldo('eye'), setVerSaldo(true), somaValores(saldoTotal)
+            setIconeSaldo('eye'), setVerSaldo(true), somaValores(saldoTotalEntrada)
         ) : (setIconeSaldo('eye-with-line'), setVerSaldo(false))
     }
 
@@ -29,48 +31,65 @@ export default function Home() {
         async function BuscarEntradas() {
             const entradas = await fetch("https://api-financas-topaz.vercel.app/entradas")
             const resposta = await entradas.json()
-            setSaldoTotal(resposta)
+            setSaldoTotalentrada(resposta)
         }
         BuscarEntradas()
-    }, [valor])
+    }, [valorEntrada])
 
     function somaValores(dados) {
         let soma = 0
         for (var i = 0; i < dados.length; i++) {
             soma += dados[i].valor
         }
-        setValor(soma)
+        setValorEntrada(soma)
+    }
+    // FUNÇÃO QUE BUSCA OS DADOS DE SAIDAS E REALIZADA A SOMA DO VALOR TOTAL DE SAIDAS
+    useEffect(() => {
+        async function BuscarEntradas() {
+            const entradas = await fetch("https://api-financas-topaz.vercel.app/saidas")
+            const resposta = await entradas.json()
+            setSaldoTotalSaida(resposta)
+        }
+        BuscarEntradas()
+    }, [valorSaida])
+
+    function somaValores(dados) {
+        let soma = 0
+        for (var i = 0; i < dados.length; i++) {
+            soma += dados[i].valor
+        }
+        setValorSaida(soma)
     }
 
     return (
         <View style={{ flex: 1 }}>
-            <StatusBar backgroundColor={Cores.azul} translucent={false} barStyle={"light-content"}/>
+            <StatusBar backgroundColor={Cores.azul} translucent={false} barStyle={"light-content"} />
             <View style={styles.cabecalho}>
                 <View style={styles.cabecalhoContainer}>
                     <View style={styles.containerIcones}>
                         <Text style={styles.cabecalhoContainerTxt}>Olá, Bruno Santos</Text>
                     </View>
-                        <TouchableOpacity style={styles.containerBtnIcone} onPress={checarSaldo}>
-                            <Entypo name={iconeSaldo} size={40} color={Cores.branco} />
-                        </TouchableOpacity>
+                    <TouchableOpacity style={styles.containerBtnIcone} onPress={checarSaldo}>
+                        <Entypo name={iconeSaldo} size={40} color={Cores.branco} />
+                    </TouchableOpacity>
                 </View>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.containerValorGeral}>
-                    <Text style={[styles.txtValor, {fontSize: 25}]}>Conta</Text>
+                    <Text style={[styles.txtValor, { fontSize: 25 }]}>Conta</Text>
                     <View style={{ width: 120, height: 30 }}>
                         {
                             verSaldo ? (
-                                <Text style={[styles.txtValor, {fontSize: 25}]}>R$ {valor}</Text>
+                                <Text style={[styles.txtValor, { fontSize: 25 }]}>R$ {valor}</Text>
                             ) : (<View style={styles.esconder} />)
                         }
                     </View>
                 </View>
 
-                <View style={styles.containerbtnIconesControles}>                    
+                <View style={styles.containerbtnIconesControles}>
                     {
                         opcoesHome.map(card => (
-                            <BtnOpcoes 
+                            <BtnOpcoes
                                 key={card.rota} rota={card.rota}
                                 texto={card.texto} icone={card.icone}
                             />
@@ -83,7 +102,7 @@ export default function Home() {
                 animation={"fadeInUp"} delay={500}
                 style={[PageStyles.rodape, { backgroundColor: Cores.azul }]}
             >
-                <Btn 
+                <Btn
                     titulo={"Sair"}
                     txtCor={Cores.branco}
                     txtFont={30}
