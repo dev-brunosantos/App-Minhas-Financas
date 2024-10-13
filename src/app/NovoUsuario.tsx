@@ -1,59 +1,71 @@
-import { Alert, Text, View } from "react-native";
+import { Alert, View } from "react-native";
 import { PageStyles } from "../styles/PageStyles";
-import { BtnComponent } from "../components/BtnComponent";
 import { InputComponent } from "../components/InputComponent";
 import { useState } from "react";
+import { BtnComponent } from "../components/BtnComponent";
+import { axiosConfig } from "../config/axiosConfig";
 
-export default function NovoUsuario() {
+interface Usuario {
+    nome: string;
+    email: string;
+    senha: string;
+}
 
-    const [usuario, setUsuario] = useState('')
-    const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-    const [confirmarSenha, setConfirmarSenha] = useState('')
+export default function NovoUSuario() {
 
-    const validarUsuario = () => {
-        if(usuario?.trim() || email?.trim() || senha?.trim() || confirmarSenha?.trim()) {
+    const [nome, setNome] = useState("")
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+    const [confirmarSenha, setConfirmarSenha] = useState("")
+
+    const [dadosUsuario, setDadosUsuario] = useState<Usuario[]>([])
+
+    const cadastrar = async () => {
+        if(nome?.trim() || email?.trim() || senha?.trim()) {
             if(confirmarSenha !== senha) {
-                return Alert.alert("As senhas não estão iguais.")
+                return Alert.alert("As senhas não são iguais.")
             }
-            
             return Alert.alert("Todos os campos devem ser preenchidos.")
         }
-        return Alert.alert("Novo usuário cadastrado com sucesso.")
+        try {
+            const response = await axiosConfig.post('/usuario/cadastrar')
+            setDadosUsuario(response.data)
+
+            return Alert.alert(`${dadosUsuario}`)
+        } catch (error) {
+            return Alert.alert('')
+        }
     }
 
     return(
         <View style={PageStyles.page}>
             <View style={PageStyles.container}>
                 <InputComponent 
-                    placeholder="Digite seu email"
+                    placeholder="Digite seu nome"
                     isPassword={false}
-                    onChangeText={setUsuario}
-                />
-
+                    onChangeText={setNome}
+                />   
                 <InputComponent 
-                    placeholder="Digite seu email"
+                    placeholder="Digite seu e-mail"
                     isPassword={false}
                     onChangeText={setEmail}
-                />
-
+                />   
                 <InputComponent 
                     placeholder="Digite sua senha"
                     isPassword={true}
                     onChangeText={setSenha}
-                />
-
+                />   
                 <InputComponent 
-                    placeholder="Digite sua senha"
+                    placeholder="Confirmar senha"
                     isPassword={true}
                     onChangeText={setConfirmarSenha}
-                />
+                />   
             </View>
             
             <View style={PageStyles.container}>
                 <BtnComponent 
-                    titulo="Entrar"
-                    onPress={validarUsuario}
+                    titulo="Cadastrar"
+                    onPress={cadastrar}
                 />
             </View>
         </View>
