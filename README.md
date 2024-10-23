@@ -14,8 +14,6 @@ App criado com React Native (Expo) e totalmente em Typescript
 
 ## Configuração
 
-Como usar?
-
 - Clonar o repositório
 ```bash
 git clone https://github.com/dev-brunosantos/App-Minhas-Financas.git
@@ -30,3 +28,9 @@ npm install
 ```bash
 npm start
 ```
+
+## Funcionalidades
+
+### Criar Entradas / Saídas
+### Editar Entradas / Saídas
+### Excluír Entradas / Saídas
