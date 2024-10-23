@@ -5,7 +5,13 @@ export default function StackLayout() {
     return (
         <AppContextProvider>
             <Stack screenOptions={{ headerShown: false }}>
-                
+                <Stack.Screen name='index' options={{
+                    statusBarColor: 'red'
+                }} />
+                <Stack.Screen name='Login' options={{
+                    statusBarColor: 'blue'
+                }} />
+                <Stack.Screen name='(drawer)' />
             </Stack>
         </AppContextProvider>
     )
