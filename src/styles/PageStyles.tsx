@@ -16,6 +16,6 @@ export const PageStyles = StyleSheet.create({
     title: {
         fontSize: 50,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
     }
 })
