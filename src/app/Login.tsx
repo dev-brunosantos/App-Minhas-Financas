@@ -1,11 +1,20 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { PageStyles } from "../styles/Pagestyles";
 import { InputComponent } from "../controllers/InputComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BtnComponent } from "../controllers/BtnComponent";
 import { useLogin } from "../hooks/useLogin";
+import { useTema } from "../hooks/useTema";
+import { TemaClaro, TemaEscuro } from "../styles/Cores";
 
 export default function Login() {
+
+    const { tema, alterarTema } = useTema()
+
+    useEffect(() => {
+        // alterarTema(TemaEscuro)
+        alterarTema(TemaClaro)
+    }, [])
 
     const { page, container } = PageStyles
     const { usuario, erro, login } = useLogin()
@@ -18,7 +27,7 @@ export default function Login() {
     }
 
     return (
-        <View style={page}>
+        <View style={[page, { backgroundColor: tema.background }]}>
             <View style={container}>
                 <InputComponent
                     placeholder="Digite seu e-mail"
@@ -39,7 +48,7 @@ export default function Login() {
             <View style={container}>
                 {erro && (
                     <TouchableOpacity>
-                        <Text>Não tem conta? Cadastre-se</Text>
+                        <Text style={{ color: tema.txt }}>Não tem conta? Cadastre-se</Text>
                     </TouchableOpacity>
                 )}
             </View>
