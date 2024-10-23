@@ -1,72 +1,23 @@
-import { Text, View } from "react-native";
-import { PageStyles } from "../styles/PageStyles";
-import { BtnComponent } from "../components/BtnComponent";
-import { InputComponent } from "../components/InputComponent";
-import { useState } from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { Pressable, Text, View } from "react-native";
+import * as Animacao from 'react-native-animatable';
 import { router } from "expo-router";
+import { PageStyles } from "../styles/Pagestyles";
 
-export default function Login() {
-
-    const [usuario, setUsuario] = useState('')
-    const [senha, setSenha] = useState('')
-    const [novoUsuario, setNovoUsuario] = useState(false)
-
-    const validarUsuario = () => {
-        // if (!usuario || !senha) {
-        //     setNovoUsuario(true)
-        //     return alert("Usuário não esta cadastrado no sistema.")
-        // }
-        // setNovoUsuario(false)
-        // return alert("Funcionou")
-
-        return router.push('/(drawer)')
-    }
-    
-    const criarConta = () => {
-        return router.push('/NovoUsuario')
-    }
-
+export default function App() {
+    const { page, container, title } = PageStyles
     return (
-        <GestureHandlerRootView>
-            <View style={PageStyles.page}>
-                <View style={PageStyles.container}>
-                    <Text>Minhas Finanças</Text>
-                </View>
-
-                <View style={PageStyles.container}>
-                    <InputComponent
-                        placeholder="Digite seu email"
-                        isPassword={false}
-                        onChangeText={setUsuario}
-                    />
-
-                    <InputComponent
-                        placeholder="Digite sua senha"
-                        isPassword={true}
-                        onChangeText={setSenha}
-                    />
-                </View>
-
-                <View style={PageStyles.container}>
-                    <BtnComponent
-                        titulo="Entrar"
-                        onPress={validarUsuario}
-                    />
-                </View>
-
-                {
-                    !novoUsuario ? (
-                        <View style={PageStyles.container}>
-                            <TouchableOpacity onPress={criarConta}>
-                                <Text>Não tem conta ? Clique aqui</Text>
-                            </TouchableOpacity>
-                        </View>
-                    ) : <View style={PageStyles.container}/>
-                }
-            </View>
-        </GestureHandlerRootView>
+        <View style={page}>
+            <Animacao.View style={container} animation={"zoomIn"} delay={500} duration={1000}>
+                <Text style={title}>
+                    Minhas Finanças
+                </Text>
+            </Animacao.View>
+            
+            <Animacao.View style={container} animation={"zoomIn"} delay={1200} duration={1000}>
+                <Pressable onPress={() => router.push('/Login')}>
+                    <Text>Fazer Login</Text>
+                </Pressable>
+            </Animacao.View>
+        </View>
     )
 }

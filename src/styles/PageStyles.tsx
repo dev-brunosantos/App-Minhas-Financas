@@ -4,17 +4,16 @@ export const PageStyles = StyleSheet.create({
     page: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-evenly',
-        padding: 15
+        justifyContent: 'center',
+        padding: 20
     },
-    container: {
+    container: {    
         width: '100%',
         height: 'auto',
-        paddingVertical: 10,
+        padding: 5,
         alignItems: 'center',
-        justifyContent: 'center'
     },
-    titulo: {
+    title: {
         fontSize: 50,
         fontWeight: 'bold',
         textAlign: 'center'
