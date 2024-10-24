@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
 // IMPORTAÇÃO DE INTERFACES
-import { Tema, TemaProps } from "../interfaces/Tema.interface";
+import { Tema, TemaProps } from "@/interfaces/Tema.interface";
 
 const TemaContext = createContext<Tema | null>(null)
 

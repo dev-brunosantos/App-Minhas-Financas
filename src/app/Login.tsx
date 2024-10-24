@@ -1,11 +1,11 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import { PageStyles } from "../styles/Pagestyles";
-import { InputComponent } from "../controllers/InputComponent";
+import { PageStyles } from "@/styles/Pagestyles";
+import { InputComponent } from "@/controllers/InputComponent";
 import { useEffect, useState } from "react";
-import { BtnComponent } from "../controllers/BtnComponent";
-import { useLogin } from "../hooks/useLogin";
-import { useTema } from "../hooks/useTema";
-import { TemaClaro, TemaEscuro } from "../styles/Cores";
+import { BtnComponent } from "@/controllers/BtnComponent";
+import { useLogin } from "@/hooks/useLogin";
+import { useTema } from "@/hooks/useTema";
+import { TemaClaro, TemaEscuro } from "@/styles/Cores";
 
 export default function Login() {
 

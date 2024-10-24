@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
 import { router } from 'expo-router'
 // IMPORTAÇÃO DE INTERFACES
-import { UsuarioProps, Login } from "../interfaces/Login.interface";
+import { UsuarioProps, Login } from "@/interfaces/Login.interface";
 import { Alert } from "react-native";
 const LoginContext = createContext<Login | null>(null)
 
@@ -17,7 +17,7 @@ const LoginContextProvider = ({ children }: { children: ReactNode }) => {
         }
         setErro(false)
         setUsuario({ email, senha })
-        return router.push('/(drawer)')
+        // return router.push('')
     }
 
     return (

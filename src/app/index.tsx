@@ -1,7 +1,7 @@
 import { Pressable, Text, View } from "react-native";
 import * as Animacao from 'react-native-animatable';
 import { router } from "expo-router";
-import { PageStyles } from "../styles/Pagestyles";
+import { PageStyles } from "@/styles/Pagestyles";
 
 export default function App() {
     const { page, container, title } = PageStyles
