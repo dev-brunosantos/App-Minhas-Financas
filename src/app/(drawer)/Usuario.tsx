@@ -16,9 +16,9 @@ export default function Usuario() {
     const trocarTema = () => {
         icone === 'moon' ? setIcone('sun') : setIcone('moon')
 
-        // if(icone === "sun") {
-        //     trocarTema(TemaClaro)
-        // }
+        if(icone === "sun") {
+            trocarTema()
+        }
     }
 
     return(
@@ -30,7 +30,7 @@ export default function Usuario() {
             </View>
 
             <View style={container}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={trocarTema}>
                     <Feather name={icone} size={35} />
                 </TouchableOpacity>
             </View>

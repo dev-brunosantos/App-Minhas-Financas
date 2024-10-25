@@ -4,6 +4,7 @@ export default function DrawerLayout() {
     return(
         <Drawer>
             <Drawer.Screen name='index' />
+            <Drawer.Screen name='Usuario' />
         </Drawer>
     )
 }
