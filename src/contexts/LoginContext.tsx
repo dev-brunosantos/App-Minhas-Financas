@@ -20,8 +20,16 @@ const LoginContextProvider = ({ children }: { children: ReactNode }) => {
         // return router.push('')
     }
 
+    const cadastrar = (nome: string, email: string, senha: string) => {
+        if (nome.trim() === "" || email.trim() === "" || senha.trim() === "") {
+            return Alert.alert("Todos os campos devem ser preenchidos.")
+        }
+        Alert.alert(`Usuario ${nome} foi cadastrado com sucesso.`)
+        return router.back()
+    }
+
     return (
-        <LoginContext.Provider value={{ usuario, erro, login }}>
+        <LoginContext.Provider value={{ usuario, erro, login, cadastrar }}>
             {children}
         </LoginContext.Provider>
     )
