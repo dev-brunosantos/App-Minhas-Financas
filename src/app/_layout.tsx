@@ -11,6 +11,9 @@ export default function StackLayout() {
                 <Stack.Screen name='Login' options={{
                     statusBarColor: 'blue'
                 }} />
+                <Stack.Screen name='NovoUsuario' options={{
+                    statusBarColor: 'blue'
+                }} />
                 <Stack.Screen name='(drawer)' />
             </Stack>
         </AppContextProvider>
