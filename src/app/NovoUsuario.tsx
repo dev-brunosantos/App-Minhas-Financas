@@ -12,10 +12,10 @@ export default function Login() {
     const { tema, alterarTema } = useTema()
     const { cadastrar } = useLogin()
 
-    useEffect(() => {
-        // alterarTema(TemaEscuro)
-        alterarTema(TemaClaro)
-    }, [])
+    // useEffect(() => {
+    //     // alterarTema(TemaEscuro)
+    //     alterarTema(TemaClaro)
+    // }, [])
 
     const { page, container } = PageStyles
 

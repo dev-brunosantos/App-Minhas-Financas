@@ -5,5 +5,7 @@ export interface TemaProps {
 
 export interface Tema {
     tema: TemaProps;
-    alterarTema: ({ background, txt }: TemaProps) => void;
+    temaAtual: TemaProps;
+    icone: string;
+    alterarTema: () => void;
 }

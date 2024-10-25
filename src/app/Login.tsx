@@ -7,15 +7,12 @@ import { useLogin } from "@/hooks/useLogin";
 import { useTema } from "@/hooks/useTema";
 import { TemaClaro, TemaEscuro } from "@/styles/Cores";
 import { router } from "expo-router";
+import { carregarTema } from "@/config/BuscarTema";
+import { TemaProps } from "@/interfaces/Tema.interface";
 
 export default function Login() {
 
-    const { tema, alterarTema } = useTema()
-
-    useEffect(() => {
-        // alterarTema(TemaEscuro)
-        alterarTema(TemaClaro)
-    }, [])
+    const { tema, temaAtual, alterarTema } = useTema()
 
     const { page, container } = PageStyles
     const { usuario, erro, login } = useLogin()
@@ -28,7 +25,7 @@ export default function Login() {
     }
 
     return (
-        <View style={[page, { backgroundColor: tema.background }]}>
+        <View style={[page, { backgroundColor: temaAtual.background }]}>
             <View style={container}>
                 <InputComponent
                     placeholder="Digite seu e-mail"
@@ -49,7 +46,7 @@ export default function Login() {
             <View style={container}>
                 {erro && (
                     <TouchableOpacity onPress={() => router.push('/NovoUsuario')}>
-                        <Text style={{ color: tema.txt }}>Não tem conta? Cadastre-se</Text>
+                        <Text style={{ color: temaAtual.txt }}>Não tem conta? Cadastre-se</Text>
                     </TouchableOpacity>
                 )}
             </View>
