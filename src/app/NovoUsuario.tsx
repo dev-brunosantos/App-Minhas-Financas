@@ -9,13 +9,8 @@ import { TemaClaro, TemaEscuro } from "@/styles/Cores";
 
 export default function Login() {
 
-    const { tema, alterarTema } = useTema()
+    const { temaAtual } = useTema()
     const { cadastrar } = useLogin()
-
-    // useEffect(() => {
-    //     // alterarTema(TemaEscuro)
-    //     alterarTema(TemaClaro)
-    // }, [])
 
     const { page, container } = PageStyles
 
@@ -28,7 +23,7 @@ export default function Login() {
     }
 
     return (
-        <View style={[page, { backgroundColor: tema.background }]}>
+        <View style={[page, { backgroundColor: temaAtual.background }]}>
             <View style={container}>
                 <InputComponent
                     placeholder="Digite seu e-mail"

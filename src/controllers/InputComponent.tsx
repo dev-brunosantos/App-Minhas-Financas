@@ -1,12 +1,15 @@
 import { View, TextInput, TextInputProps, TouchableOpacity, StyleSheet } from 'react-native'
 import { Entypo } from '@expo/vector-icons'
 import { useState } from 'react';
+import { useTema } from '@/hooks/useTema';
 
 interface InputProps extends TextInputProps {
     isPassword: boolean;
 }
 
 export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
+
+    const { temaAtual } = useTema()
 
     const { container, btn, input } = styles // DESESTRUTURAÇÃO DE ESTILOS
 
@@ -21,27 +24,27 @@ export const InputComponent = ({ isPassword, ...rest }: InputProps) => {
 
     if (isPassword) {
         return (
-            <View style={container}>
+            <View style={[container, { backgroundColor: temaAtual.background }]}>
                 <TextInput
-                    style={input}
+                    style={[input, { color: temaAtual.txt}]}
                     {...rest}
-                    placeholderTextColor={''}
+                    placeholderTextColor={temaAtual.txt}
                     secureTextEntry={seguranca}
                 />
 
                 <TouchableOpacity style={btn} onPress={verSenha}>
-                    <Entypo name={icone} size={35} />
+                    <Entypo name={icone} size={35} color={temaAtual.txt} />
                 </TouchableOpacity>
             </View>
         )
     }
 
     return (
-        <View style={container}>
+        <View style={[container, { backgroundColor: temaAtual.background, borderColor: temaAtual.txt }]}>
             <TextInput
-                style={input}
+                style={[input, { color: temaAtual.txt }]}
                 {...rest}
-                placeholderTextColor={''}
+                placeholderTextColor={temaAtual.txt}
             />
         </View>
     )

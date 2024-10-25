@@ -18,8 +18,8 @@ const TemaContextProvider = ({ children }: { children: ReactNode }) => {
 
         if(icone === 'moon') {
             // setTema(TemaClaro)
-            setTema(TemaEscuro)
-            await AsyncStorage.setItem('tema_atual', JSON.stringify({background: TemaClaro.background, txt: TemaClaro.txt}))
+            setTema(TemaClaro)
+            await AsyncStorage.setItem('tema_atual', JSON.stringify({background: TemaEscuro.background, txt: TemaEscuro.txt}))
             
             // let teste = await AsyncStorage.getItem('tema_atual')
             // console.log(teste)
@@ -27,8 +27,8 @@ const TemaContextProvider = ({ children }: { children: ReactNode }) => {
         }
         else {
             // setTema(TemaEscuro)
-            setTema(TemaClaro)
-            await AsyncStorage.setItem('tema_atual', JSON.stringify({background: TemaEscuro.background, txt: TemaEscuro.txt}))
+            setTema(TemaEscuro)
+            await AsyncStorage.setItem('tema_atual', JSON.stringify({background: TemaClaro.background, txt: TemaClaro.txt}))
             
             // let teste = await AsyncStorage.getItem('tema_atual')
             // console.log(teste)

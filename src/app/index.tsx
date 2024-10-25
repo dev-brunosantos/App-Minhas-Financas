@@ -13,30 +13,17 @@ export default function App() {
 
     const { temaAtual } = useTema()
 
-    const [temaTeste, setTemaTeste] = useState<TemaProps>()
-
-    useEffect(() => {
-        const buscarTema = async () => {
-            try {
-                let teste = await AsyncStorage.getItem('tema_atual')
-                setTemaTeste(JSON.parse(teste))
-            } catch (error) {
-                
-            }
-        }
-    }, [])
-
     return (
         <View style={[page, { backgroundColor: temaAtual?.background}]}>
             <Animacao.View style={container} animation={"zoomIn"} delay={500} duration={1000}>
-                <Text style={title}>
+                <Text style={[title, { color: temaAtual.txt }]}>
                     Minhas Finanças
                 </Text>
             </Animacao.View>
             
             <Animacao.View style={container} animation={"zoomIn"} delay={1200} duration={1000}>
                 <Pressable onPress={() => router.push('/Login')}>
-                    <Text>Fazer Login</Text>
+                    <Text style={{ fontSize: 22, color: temaAtual.txt }}>Fazer Login</Text>
                 </Pressable>
             </Animacao.View>
         </View>
