@@ -1,10 +1,10 @@
-import { PageStyles } from '@/src/styles/Pagestyles'
+import { PageStyles } from '@/styles/Pagestyles'
 import { View, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
 import { useState } from 'react'
-import { useTema } from '@/src/hooks/useTema'
-import { TemaClaro } from '@/src/styles/Cores'
+import { useTema } from '@/hooks/useTema'
+import { TemaClaro } from '@/styles/Cores'
 
 export default function Usuario() {
     const { page, container, title } = PageStyles

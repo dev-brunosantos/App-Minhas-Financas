@@ -1,4 +1,4 @@
-import { PageStyles } from '@/src/styles/Pagestyles'
+import { PageStyles } from '@/styles/Pagestyles'
 import { View, Text } from 'react-native'
 
 export default function Home() {
