@@ -6,6 +6,7 @@ import { BtnComponent } from "@/controllers/BtnComponent";
 import { useLogin } from "@/hooks/useLogin";
 import { useTema } from "@/hooks/useTema";
 import { TemaClaro, TemaEscuro } from "@/styles/Cores";
+import { router } from "expo-router";
 
 export default function Login() {
 
@@ -47,7 +48,7 @@ export default function Login() {
 
             <View style={container}>
                 {erro && (
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => router.push('/NovoUsuario')}>
                         <Text style={{ color: tema.txt }}>Não tem conta? Cadastre-se</Text>
                     </TouchableOpacity>
                 )}
