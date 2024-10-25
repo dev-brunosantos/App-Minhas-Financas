@@ -17,7 +17,7 @@ const LoginContextProvider = ({ children }: { children: ReactNode }) => {
         }
         setErro(false)
         setUsuario({ email, senha })
-        // return router.push('')
+        return router.push('/(drawer)')
     }
 
     const cadastrar = (nome: string, email: string, senha: string) => {
