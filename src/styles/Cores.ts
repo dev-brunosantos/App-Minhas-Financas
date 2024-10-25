@@ -5,12 +5,14 @@ export const Cores = {
     cinza_escuro: "#242424"
 }
 
+const { cinza, cinza_escuro } = Cores
+
 export const TemaClaro = {
-    background: Cores.cinza,
-    txt: Cores.cinza_escuro
+    background: cinza,
+    txt: cinza_escuro
 }
 
 export const TemaEscuro = {
-    background: Cores.cinza_escuro,
-    txt: Cores.cinza
+    background: cinza_escuro,
+    txt: cinza
 }
