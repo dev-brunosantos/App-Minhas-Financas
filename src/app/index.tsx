@@ -6,11 +6,25 @@ import { useEffect, useState } from "react";
 import { TemaProps } from "@/interfaces/Tema.interface";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTema } from "@/hooks/useTema";
 
 export default function App() {
     const { page, container, title } = PageStyles
 
-    const [temaAtual, setTemaAtual] = useState<TemaProps>()
+    const { temaAtual } = useTema()
+
+    const [temaTeste, setTemaTeste] = useState<TemaProps>()
+
+    useEffect(() => {
+        const buscarTema = async () => {
+            try {
+                let teste = await AsyncStorage.getItem('tema_atual')
+                setTemaTeste(JSON.parse(teste))
+            } catch (error) {
+                
+            }
+        }
+    }, [])
 
     return (
         <View style={[page, { backgroundColor: temaAtual?.background}]}>

@@ -6,32 +6,40 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const TemaContext = createContext<Tema | null>(null)
 
-const TemaContextProvider = ({ children }:{ children: ReactNode }) => {
+const TemaContextProvider = ({ children }: { children: ReactNode }) => {
 
     const [icone, setIcone] = useState('sun')
-    const [tema, setTema] = useState<TemaProps>({ background: "", txt: "" })
+    // const [tema, setTema] = useState<TemaProps>(TemaClaro)
+    const [tema, setTema] = useState<TemaProps>(TemaEscuro)
     const [temaAtual, setTemaAtual] = useState<TemaProps>({ background: "", txt: "" })
 
     const alterarTema = async () => {
         icone === 'moon' ? setIcone('sun') : setIcone('moon')
 
-        let teste:Promise<TemaProps> = AsyncStorage.getItem('tema_atual')
-        
-
-        if (icone === "sun") {
-            setTema(TemaClaro)
-            await AsyncStorage.setItem('tema_atual', JSON.stringify(tema))
+        if(icone === 'moon') {
+            // setTema(TemaClaro)
+            setTema(TemaEscuro)
+            await AsyncStorage.setItem('tema_atual', JSON.stringify({background: TemaClaro.background, txt: TemaClaro.txt}))
+            
+            // let teste = await AsyncStorage.getItem('tema_atual')
+            // console.log(teste)
             return setTemaAtual(tema)
         }
-        setTema(TemaEscuro)
-        await AsyncStorage.setItem('tema_atual', JSON.stringify(tema))
-        return setTemaAtual(teste)
+        else {
+            // setTema(TemaEscuro)
+            setTema(TemaClaro)
+            await AsyncStorage.setItem('tema_atual', JSON.stringify({background: TemaEscuro.background, txt: TemaEscuro.txt}))
+            
+            // let teste = await AsyncStorage.getItem('tema_atual')
+            // console.log(teste)
+            return setTemaAtual(tema)
+        }
     }
 
 
     return (
         <TemaContext.Provider value={{ tema, temaAtual, alterarTema, icone }}>
-            { children }
+            {children}
         </TemaContext.Provider>
     )
 }
